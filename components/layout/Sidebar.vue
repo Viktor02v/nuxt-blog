@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<aside class="w-[300px] bg-sidebarBg py-5 flex flex-col gap-6 items-center h-[100vh]">
+	<aside class="w-[300px] fixed right-0 top-0 bg-sidebarBg py-5 flex flex-col gap-6 items-center h-[100vh]">
 		<div class="relative w-full">
 		<NuxtLink to="/" class="border-b flex flex-col pb-5 items-center w-full">
 		<NuxtImg class="w-[100px] md:w-[120px] outline outline-white rounded-full" src="/logo-virus.webp"/>

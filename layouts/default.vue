@@ -3,8 +3,8 @@
 </script>
 
 <template>
-	<section class="grid w-full h-[100vh]">
-		<LayoutSidebar />
+	<section class="grid relative w-full h-[100vh]">
+		<LayoutSidebar  />
 		<div>
 			<slot />
 		</div>
@@ -14,6 +14,6 @@
 <style scoped>
 .grid {
 	display: grid;
-	@apply  grid-cols-[1fr_4fr];
+	@apply  grid-cols-[4fr_1fr];
 }
 </style>
