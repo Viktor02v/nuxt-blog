@@ -14,7 +14,6 @@
 <style scoped>
 .grid {
 	display: grid;
-	@apply grid-cols-3 md:grid-cols-5 grid-flow-col;
-	@apply md:grid-cols-5
+	@apply  grid-cols-[1fr_4fr];
 }
 </style>
