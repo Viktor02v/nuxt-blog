@@ -4,7 +4,7 @@
 
 <template>
 	<div class="p-10">
-		<h1 class="font-bold text-4xl mb-10">
+		<h1 class="font-bold text-title text-4xl mb-10">
 			All Blogs
 		</h1>
 	</div>
