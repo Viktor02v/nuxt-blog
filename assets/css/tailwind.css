@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: #234e6d;
+		--sidebar-bg: #061a29;
+		
+		--hoverSideBar: #8A57BD;
+
+
+		--base: 27px;
+	}
+}
+
+@layer base {
+	body {
+		@apply bg-background;
+	}
+}
