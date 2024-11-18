@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: #edebeb;
+		--sidebar-bg: #f4d1d1;
+		--title: #e4b7b7;
+		--hoverSideBar: #d99292;
+
+		--base: 27px;
+	}
+}
+
+@layer base {
+	body {
+		@apply bg-background text-base;
+		font-family: 'Lato', sans-serif;
+	}
+}
