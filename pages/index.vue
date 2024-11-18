@@ -3,11 +3,10 @@
 </script>
 <template>
 	<div class="">
-		Hey there
+
 	</div>
+	
 </template>
 
 
-<style scoped>
-
-</style>
+<style scoped></style>

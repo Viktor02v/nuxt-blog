@@ -4,10 +4,10 @@
 
 @layer base {
 	:root {
-		--background: #234e6d;
-		--sidebar-bg: #061a29;
+		--background: #ffffff;
+		--sidebar-bg: #ebdede;
 		
-		--hoverSideBar: #8A57BD;
+		--hoverSideBar: #ae7be1;
 
 
 		--base: 27px;
@@ -16,6 +16,7 @@
 
 @layer base {
 	body {
-		@apply bg-background;
+		@apply bg-background text-base;
+		font-family: 'Lato', sans-serif;
 	}
 }

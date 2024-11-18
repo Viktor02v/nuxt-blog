@@ -11,24 +11,19 @@ export const MENU_DATA:MenuData[] = [
 		url:'/',
 	},
 	{
-		name:'Customers',
-		icon:'fluent:receipt-28-regular',
-		url:'/customers',
+		name:'Create',
+		icon:'line-md:file-plus',
+		url:'/create',
 	},
 	{
-		name:'Payments',
-		icon:'ph:contactless-payment',
-		url:'/payments',
+		name:'All Blogs',
+		icon:'line-md:list',
+		url:'/all-blogs',
 	},
 	{
-		name:'Products',
-		icon:'ep:goods',
-		url:'/products',
-	},
-	{
-		icon: 'mingcute:group-line',
-		name:'Orders',
-		url:'/orders'
+		icon: 'line-md:edit',
+		name:'Edit',
+		url:'/edit'
 	},
 	{
 		icon: 'fluent:person-feedback-48-regular',
@@ -36,7 +31,7 @@ export const MENU_DATA:MenuData[] = [
 		url:'/feedback'
 	},
 	{
-		icon: 'radix-icons:gear',
+		icon: 'eos-icons:rotating-gear',
 		name:'Settings',
 		url:'/settings'
 	},
