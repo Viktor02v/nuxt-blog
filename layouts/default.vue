@@ -4,13 +4,15 @@ import { account } from '~/lib/appwrite';
 
 const isLoadingStore = useIsLoadingStore();
 const authStore = useAuthStore();
-const router = useRouter();
 
 onMounted(async () => {
+	const isLoadingStore = useIsLoadingStore();
+	const authStore = useAuthStore();
+	const router = useRouter();
 	try {
 		const user = await account.get()
 		if (user) {
-			authStore.set( user )
+			authStore.set(user)
 		}
 	} catch (error) {
 		alert(`Something went wrong: ${error.message || error}`)
