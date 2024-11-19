@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useIsLoadingStore, useAuthStore } from '@/store/auth.store';
+import { v4 as uuid } from 'uuid'
 import { account } from '~/lib/appwrite';
 
 useSeoMeta({
@@ -54,8 +55,12 @@ const login = async () => {
 
 // Function to Register
 const register = async () => {
-	try{
-		await account.create(npm i uuid)
+	try {
+		await account.create(uuid(), user.email, user.password, user.name)
+
+		await login();
+	} catch (error) {
+		alert(`Registration failed:, ${error}`);
 	}
 }
 </script>
