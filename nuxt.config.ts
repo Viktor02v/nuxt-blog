@@ -23,5 +23,8 @@ shadcn: {
    prefix: 'Ui',
 
    componentDir: './components/ui'
-}
+},
+pinia:{
+	storesDirs:['./store/**'],
+},
 })

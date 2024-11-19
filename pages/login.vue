@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useIsLoadingStore } from '@/store/auth.store';
+
 useSeoMeta({
 	title: "Login | Blogger",
 });
@@ -9,7 +11,8 @@ const user = reactive({
 	password: ''
 })
 
-
+const isLoadingStore = useIsLoadingStore()
+const router = useRouter()
 </script>
 
 <template>

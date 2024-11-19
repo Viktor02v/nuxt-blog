@@ -28,5 +28,8 @@
     "tailwindcss-animate": "^1.0.7",
     "vue": "latest",
     "vue-router": "latest"
-  }
+  },
+   "overrides": {
+	"vue": "latest"
+}
 }
