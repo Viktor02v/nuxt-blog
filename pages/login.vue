@@ -1,18 +1,56 @@
 <script setup lang="ts">
-import { useIsLoadingStore } from '@/store/auth.store';
+import { useIsLoadingStore, useAuthStore } from '@/store/auth.store';
+import { account } from '~/lib/appwrite';
 
 useSeoMeta({
 	title: "Login | Blogger",
 });
 
+// User data
 const user = reactive({
 	email: '',
 	name: '',
 	password: ''
 })
 
+// Call useLoadingStore
 const isLoadingStore = useIsLoadingStore()
+// Call authStore
+const authStore = useAuthStore()
+
+// Call useRouter
 const router = useRouter()
+
+// Function to Login
+const login = async () => {
+	try {
+		isLoadingStore.set(true); // Start loading
+		await account.createEmailPasswordSession(user.email, user.password); // Create session
+		const response = await account.get(); // Fetch user data
+
+		if (response) {
+			authStore.set({
+				user: {
+					email: response.email,
+					name: response.name,
+					status: response.status,
+				}
+			});
+		}
+
+		// Reset user data
+		user.email = '';
+		user.password = '';
+		user.name = '';
+
+		// Navigate to home page
+		await router.push('/');
+	} catch (error) {
+		alert(`Login failed:, ${error}`);
+	} finally {
+		isLoadingStore.set(false); // Stop loading
+	}
+};
 </script>
 
 <template>
@@ -26,7 +64,7 @@ const router = useRouter()
 				<UiInput v-model="user.name" placeholder="Name" type="text" class="mb-3" />
 
 				<div class="flex items-center justify-center gap-5">
-					<UiButton class="text-white" variant="secondary" type="button">Login</UiButton>
+					<UiButton @click="login" class="text-white" variant="secondary" type="button">Login</UiButton>
 					<UiButton class="text-white" variant="secondary" type="button">Register
 					</UiButton>
 				</div>
