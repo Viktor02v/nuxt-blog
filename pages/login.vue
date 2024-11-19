@@ -23,8 +23,9 @@ const user = reactive({
 				<UiInput v-model="user.name" placeholder="Name" type="text" class="mb-3" />
 
 				<div class="flex items-center justify-center gap-5">
-					<button>Hey there</button>
-					<button>Hey there</button>
+					<UiButton class="text-white" variant="secondary" type="button">Login</UiButton>
+					<UiButton class="text-white" variant="secondary" type="button">Register
+					</UiButton>
 				</div>
 			</form>
 		</div>

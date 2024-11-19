@@ -11,6 +11,7 @@ module.exports = {
     extend: {
 		colors:{
 			background: "var(--background)",
+			secondary:"var(--secondary)",
 			sidebarBg: "var(--sidebar-bg)",
 			colorSidebar: "var(--hoverSideBar)",
 			title: "var(--title)",
