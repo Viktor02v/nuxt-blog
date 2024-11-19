@@ -77,7 +77,7 @@ const register = async () => {
 
 				<div class="flex items-center justify-center gap-5">
 					<UiButton @click="login" class="text-white" variant="secondary" type="button">Login</UiButton>
-					<UiButton class="text-white" variant="secondary" type="button">Register
+					<UiButton @click="register" class="text-white" variant="secondary" type="button">Register
 					</UiButton>
 				</div>
 			</form>

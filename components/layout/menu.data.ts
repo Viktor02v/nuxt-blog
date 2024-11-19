@@ -6,7 +6,7 @@ export interface MenuData {
 
 export const MENU_DATA:MenuData[] = [
 	{
-		name:'Home',
+		name:'Profile',
 		icon:'radix-icons:dashboard',
 		url:'/',
 	},
