@@ -51,6 +51,13 @@ const login = async () => {
 		isLoadingStore.set(false); // Stop loading
 	}
 };
+
+// Function to Register
+const register = async () => {
+	try{
+		await account.create(npm i uuid)
+	}
+}
 </script>
 
 <template>

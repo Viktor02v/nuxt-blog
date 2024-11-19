@@ -26,10 +26,11 @@
     "shadcn-nuxt": "^0.11.2",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^11.0.3",
     "vue": "latest",
     "vue-router": "latest"
   },
-   "overrides": {
-	"vue": "latest"
-}
+  "overrides": {
+    "vue": "latest"
+  }
 }
