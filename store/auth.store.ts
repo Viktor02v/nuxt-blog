@@ -1,17 +1,15 @@
 interface AuthStore {
-	user:{
 		email:string
 		name:string
 		status:boolean
-	}
 }
 
-const defaultValue:AuthStore = {
+const defaultValue:{user:AuthStore} = {
 	user:{
 		email:'',
 		name:'',
 		status:false,
-	},
+	}
 }
 
 export const useAuthStore = defineStore('auth', {

@@ -8,11 +8,9 @@ useSeoMeta({
 });
 
 // User data
-const user = reactive({
-	email: '',
-	name: '',
-	password: ''
-})
+const email = ref('')
+const name = ref('')
+const password = ref('')
 
 // Call useLoadingStore
 const isLoadingStore = useIsLoadingStore()
@@ -26,23 +24,21 @@ const router = useRouter()
 const login = async () => {
 	try {
 		isLoadingStore.set(true); // Start loading
-		await account.createEmailPasswordSession(user.email, user.password); // Create session
+		await account.createEmailPasswordSession(email.value, password.value); // Create session
 		const response = await account.get(); // Fetch user data
 
 		if (response) {
 			authStore.set({
-				user: {
-					email: response.email,
-					name: response.name,
-					status: response.status,
-				}
+				email: response.email,
+				name: response.name,
+				status: response.status,
 			});
 		}
 
 		// Reset user data
-		user.email = '';
-		user.password = '';
-		user.name = '';
+		email.value = '';
+		password.value = '';
+		name.value = '';
 
 		// Navigate to home page
 		await router.push('/');
@@ -56,7 +52,7 @@ const login = async () => {
 // Function to Register
 const register = async () => {
 	try {
-		await account.create(uuid(), user.email, user.password, user.name)
+		await account.create(uuid(), email.value, password.value, name.value)
 
 		await login();
 	} catch (error) {
@@ -71,12 +67,13 @@ const register = async () => {
 			<h1 class="text-2xl text-white hover:text-colorSidebar font-bold text-center mb-5">Login</h1>
 
 			<form>
-				<UiInput v-model="user.email" placeholder="Email" type="email" class="mb-3" />
-				<UiInput v-model="user.password" placeholder="Password" type="password" class="mb-3" />
-				<UiInput v-model="user.name" placeholder="Name" type="text" class="mb-3" />
+				<UiInput v-model="email" placeholder="Email" type="email" class="mb-3" />
+				<UiInput v-model="password" placeholder="Password" type="password" class="mb-3" />
+				<UiInput v-model="name" placeholder="Name" type="text" class="mb-3" />
 
 				<div class="flex items-center justify-center gap-5">
-					<UiButton @click="login" class="text-white" variant="secondary" type="button">Login</UiButton>
+					<UiButton @click="login" @keyup.enter="login" class="text-white" variant="secondary" type="button">Login
+					</UiButton>
 					<UiButton @click="register" class="text-white" variant="secondary" type="button">Register
 					</UiButton>
 				</div>

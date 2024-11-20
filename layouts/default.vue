@@ -24,14 +24,12 @@ onMounted(async () => {
 </script>
 
 <template>
-	<section>
-		<LayoutLoader v-if="isLoadingStore.isLoading" />
-		<section v-else :class="{ grid: authStore.isAuth }" class="relative w-full h-[100vh]">
-			<LayoutSidebar v-if="authStore.isAuth" />
-			<div>
-				<slot />
-			</div>
-		</section>
+	<LayoutLoader v-if="isLoadingStore.isLoading" />
+	<section v-else :class="{ grid: authStore.isAuth }" class="relative w-full h-[100vh]">
+		<LayoutSidebar v-if="authStore.isAuth" />
+		<div>
+			<slot />
+		</div>
 	</section>
 </template>
 
