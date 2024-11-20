@@ -5,10 +5,11 @@
 @layer base {
 	:root {
 		--background: #edebeb;
+		--secondary:#eec2c2;
 		--sidebar-bg: #f4d1d1;
 		--title: #e4b7b7;
 		--hoverSideBar: #d99292;
-
+		
 		--base: 27px;
 	}
 }

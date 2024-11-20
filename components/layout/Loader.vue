@@ -4,7 +4,7 @@
 
 <template>
 	<div class="wrapper">
-		<img src="/loader.gif" alt="">
+		<Icon name="eos-icons:bubble-loading" class="bg-white" size="300" alt="" />
 	</div>
 </template>
 
