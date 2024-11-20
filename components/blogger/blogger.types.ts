@@ -1,11 +1,14 @@
 export interface BlogCard{
 	id:string,
-	foto1:string,
+	foto1_url:string,
 	about:string,
 	description1:string,
-	foto2:string,
+	foto2_url:string,
 	description2:string,
-	creator:Object,
+	creator:{
+		name: string,
+		email: string
+	},
 	$createdAt: string,
 	title:string,
 }
