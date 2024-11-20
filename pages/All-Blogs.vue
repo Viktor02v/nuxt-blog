@@ -9,7 +9,7 @@ useSeoMeta({
 		<h1 class="font-bold  text-center text-title text-4xl mb-10">
 			All Blogs | Blogger
 		</h1>
-		<UiCard class="w-full h-[400px] flex flex-col gap-4 p-5">
+		<UiCard class="w-full animation flex flex-col gap-4 p-5">
 			<div class="flex items-center justify-between">
 				<UiCardTitle class="text-center">
 					Game Blog
@@ -25,9 +25,28 @@ useSeoMeta({
 					alias architecto, in fugit, quae ipsam quos a aliquid commodi hic quisquam ea veritatis libero ab?
 				</div>
 			</UiCardContent>
+			<UiCardFooter>
+				Created: 21.11.24
+			</UiCardFooter>
 		</UiCard>
 	</section>
 </template>
 
 
-<style scoped></style>
+<style scoped>
+@keyframes show {
+	from {
+		transform: scale(0.5) translateY(-30px);
+		opacity: 0.4;
+	}
+
+	to {
+		transform: scale(1) translateY(0);
+		opacity: 1;
+	}
+}
+
+.animation {
+	animation: show 0.3s ease-in-out;
+}
+</style>

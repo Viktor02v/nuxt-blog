@@ -20,6 +20,7 @@ module.exports = {
 			sidebarBg: "var(--sidebar-bg)",
 			colorSidebar: "var(--hoverSideBar)",
 			title: "var(--title)",
+			customColor: "#d99292",
 		},
 		fontSize:{
 			base:"var(--base)",
