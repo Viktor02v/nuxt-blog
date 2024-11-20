@@ -1,0 +1,4 @@
+export function useBloggerQuery() {
+	
+	return{}
+}
