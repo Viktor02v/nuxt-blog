@@ -23,7 +23,7 @@ const logout = async () => {
 					<div class="relative">
 						<NuxtImg class="" src="/logo-virus.webp" />
 						<div
-							class="bg-white w-full h-8 hover:h-40 transition-all  duration-100 ease-in-out flex items-center bg-opacity-60 justify-center bottom-0 right-0 absolute">
+							class="bg-white w-full h-8 hover:h-40 transition-all  duration-300 ease-in-out flex items-center bg-opacity-60 justify-center bottom-0 right-0 absolute">
 							<div class="mt-5 flex flex-col items-center">
 								<p class="font-bold text-white text-shadow-sm text-2xl ">{{ authStore.user.name[0] }}</p>
 								<p class="font-bold text-white text-shadow-sm text-[10px] ">{{ authStore.user.email }}</p>
