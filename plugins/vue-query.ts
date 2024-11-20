@@ -9,7 +9,7 @@ import type {
 	dehydrate,
  } from '@tanstack/vue-query'
  // Nuxt 3 app aliases
- import { useState } from '#app'
+ import { defineNuxtPlugin, useState } from '#imports'
  
  export default defineNuxtPlugin((nuxt) => {
 	const vueQueryState = useState<DehydratedState | null>('vue-query')
@@ -22,16 +22,13 @@ import type {
  
 	nuxt.vueApp.use(VueQueryPlugin, options)
  
-	if (process.server) {
+	if (import.meta.server) {
 	  nuxt.hooks.hook('app:rendered', () => {
 		 vueQueryState.value = dehydrate(queryClient)
 	  })
 	}
  
-	if (process.client) {
-	  nuxt.hooks.hook('app:created', () => {
-		 hydrate(queryClient, vueQueryState.value)
-	  })
+	if (import.meta.client) {
+	  hydrate(queryClient, vueQueryState.value)
 	}
  })
-

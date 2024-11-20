@@ -14,11 +14,8 @@ export interface Comment extends BaseField{
 }
 
 export interface Blog extends BaseField {
-	comments: Comment[],
 	creators:Creator,
 	foto1:string,
 	description1:string,
-	foto2:string,
-	description2:string,
 	$createdAt: string,
 }

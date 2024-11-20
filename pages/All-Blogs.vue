@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { useBloggerQuery } from '@/components/blogger/useBloggerQuery'
+
 useSeoMeta({
 	title: 'All Blogs | Blogger'
 })
+const { data: blogs, isLoading, error } = useBloggerQuery()
 </script>
 
 <template>
@@ -9,26 +12,27 @@ useSeoMeta({
 		<h1 class="font-bold  text-center text-title text-4xl mb-10">
 			All Blogs | Blogger
 		</h1>
-		<UiCard class="w-full animation flex flex-col gap-4 p-5">
-			<div class="flex items-center justify-between">
-				<UiCardTitle class="text-center">
-					Game Blog
-				</UiCardTitle>
-				<div>
-					By:User Name
+		<BlogList v-for="blog in blogs" :key="blog.id" class="">
+			<UiCard class="w-full animation flex flex-col gap-4 p-5">
+				<div class="flex items-center justify-between">
+					<UiCardTitle class="text-center">
+						{{ blog.title }}
+					</UiCardTitle>
+					<div>
+						By: {{ blog.creator.name }}
+					</div>
 				</div>
-			</div>
-			<UiCardContent class="w-full flex gap-10 items-center">
-				<NuxtImg src="/logo-virus.webp" class="w-1/2 h-[250px]" alt="" />
-				<div class="">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas pariatur voluptatem voluptatum maxime natus
-					alias architecto, in fugit, quae ipsam quos a aliquid commodi hic quisquam ea veritatis libero ab?
-				</div>
-			</UiCardContent>
-			<UiCardFooter>
-				Created: 21.11.24
-			</UiCardFooter>
-		</UiCard>
+				<UiCardContent class="w-full flex gap-10 items-center">
+					<NuxtImg :src="blog.foto1_url" class="w-1/2 h-[250px] rounded" alt="" />
+					<div class="">
+						{{ blog.about }}
+					</div>
+				</UiCardContent>
+				<UiCardFooter>
+					Created: {{ blog.$createdAt }}
+				</UiCardFooter>
+			</UiCard>
+		</BlogList>
 	</section>
 </template>
 
