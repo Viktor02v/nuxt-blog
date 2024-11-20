@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MENU_DATA } from '@/components/layout/menu.data'
+import { MENU_DATA } from '~/components/layout/user/menu.data'
 </script>
 
 <template>

@@ -26,7 +26,7 @@ onMounted(async () => {
 <template>
 	<LayoutLoader v-if="isLoadingStore.isLoading" />
 	<section v-else :class="{ grid: authStore.isAuth }" class="relative w-full h-[100vh]">
-		<LayoutSidebar v-if="authStore.isAuth" />
+		<LayoutUserSidebar v-if="authStore.isAuth" />
 		<div>
 			<slot />
 		</div>

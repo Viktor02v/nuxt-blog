@@ -9,11 +9,9 @@ useSeoMeta({
 		<h1 class="font-bold  text-center text-title text-4xl mb-10">
 			All Blogs | Blogger
 		</h1>
-		<LayoutUserBlogList />
+		<LayoutCommonBloglist />
 	</section>
 </template>
 
 
-<style scoped>
-
-</style>
+<style scoped></style>

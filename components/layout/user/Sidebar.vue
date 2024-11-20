@@ -40,7 +40,7 @@ const logout = async () => {
 			</button>
 		</div>
 
-		<LayoutMenu />
+		<LayoutUserMenu />
 	</aside>
 </template>
 
