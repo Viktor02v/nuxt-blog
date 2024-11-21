@@ -14,28 +14,11 @@ const { data: blogs, isLoading, error } = useBloggerQuery()
 		</div>
 
 		<div v-else>
-		<div v-for="blog in blogs" :key="blog.id" class="mb-5">
-			<UiCard class="w-full animation flex flex-col gap-4 p-5">
-				<div class="flex items-center justify-between">
-					<UiCardTitle class="text-center">
-						{{ blog.title }}
-					</UiCardTitle>
-					<div>
-						By: {{ blog.creator.name }}
-					</div>
-				</div>
-				<UiCardContent class="w-full flex gap-10 items-start">
-					<NuxtImg :src="blog.foto1_url" class="w-1/2 h-[250px] rounded" alt="" />
-					<div class="">
-						{{ blog.about }}
-					</div>
-				</UiCardContent>
-				<UiCardFooter>
-					Created: {{ blog.$createdAt }}
-				</UiCardFooter>
-			</UiCard>
+			<div v-for="blog in blogs" :key="blog.id" class="mb-5">
+				<LayoutCommonBlogcard :blog="blog" />
+				<div></div>
+			</div>
 		</div>
-	</div>
 	</section>
 </template>
 
