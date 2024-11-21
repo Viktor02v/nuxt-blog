@@ -16,6 +16,7 @@ const { data: blogs, isLoading, error } = useBloggerQuery()
 		<div v-else>
 			<div v-for="blog in blogs" :key="blog.id" class="mb-5">
 				<LayoutCommonBlogcard :blog="blog"/>
+				<div></div>
 			</div>
 		</div>
 	</section>
