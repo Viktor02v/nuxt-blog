@@ -13,7 +13,7 @@ export const MENU_DATA:MenuData[] = [
 	{
 		name:'Create',
 		icon:'line-md:file-plus',
-		url:'/create',
+		url:'/user/create-blog',
 	},
 	{
 		name:'All Blogs',
