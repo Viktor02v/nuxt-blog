@@ -22,6 +22,7 @@
     "appwrite": "^16.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "datajs": "^1.0.3",
     "nuxt": "^3.14.159",
     "radix-vue": "^1.9.9",
     "shadcn-nuxt": "^0.11.2",
