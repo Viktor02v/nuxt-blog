@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { BlogCard } from '~/components/blogger/blogger.types';
-import {formatDate} from '@/components/blogger/formatDate'
+import { formatDate } from '@/components/blogger/formatDate'
 
 const props = defineProps<{
 	blog: BlogCard;
@@ -19,7 +19,7 @@ const props = defineProps<{
 			</div>
 		</div>
 		<UiCardContent class="w-full flex gap-10 items-start">
-			<NuxtImg :src="props.blog.foto1_url" class="w-1/2 h-[250px] rounded" alt="" />
+			<NuxtImg :src="props.blog.foto1_url" class="min-w-1/2 h-[250px] rounded" alt="" />
 			<div class="flex flex-col gap-3">
 				<h2 class="">Description:</h2>
 				<p>{{ props.blog.about }}</p>
