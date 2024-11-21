@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { BlogCard } from '~/components/blogger/blogger.types';
+import dayjs from 'dayjs'
 const props = defineProps<{
 	blog: BlogCard;
 }>();
+const formatDate = (date: string) => dayjs(date).format('DD MM YYYY');
 </script>
 
 <template>
@@ -23,10 +25,9 @@ const props = defineProps<{
 			</div>
 		</UiCardContent>
 		<UiCardFooter>
-			Created: {{ props.blog.$createdAt }}
+			Created: {{ formatDate(blog.$createdAt) }}
 		</UiCardFooter>
 	</UiCard>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
