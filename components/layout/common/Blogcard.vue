@@ -28,4 +28,9 @@ const props = defineProps<{
 	</UiCard>
 </template>
 
+<<<<<<< HEAD
 <style scoped></style>
+=======
+<style scoped>
+</style>
+>>>>>>> 4993a61cb6528d84d1bc9d7bbeaaf3e05db2f116
