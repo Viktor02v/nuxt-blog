@@ -1,7 +1,8 @@
 export interface BlogCard{
 	id:string,
-	foto1_url:string,
+	title:string,
 	about:string,
+	foto1_url:string,
 	description1:string,
 	foto2_url:string,
 	description2:string,
@@ -10,5 +11,5 @@ export interface BlogCard{
 		email: string
 	},
 	$createdAt: string,
-	title:string,
+	
 }

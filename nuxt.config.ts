@@ -1,23 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
-  modules: [
+compatibilityDate: '2024-04-03',
+devtools: { enabled: true },
+modules: [
    '@nuxtjs/tailwindcss',
    'shadcn-nuxt',
    '@nuxt/image',
    '@nuxt/icon',
    ['@nuxtjs/google-fonts',
-       {
-       families: {
-           Lato:{
+      {
+      families: {
+         Lato:{
                wght:[300,400,700],
                ital:[300],
-           }
-       }
+         }
+      }
 }],
-   '@pinia/nuxt'
-  ],
+   '@pinia/nuxt',
+	[
+      '@vee-validate/nuxt',
+      {
+      autoImports: true,
+      },
+   ],
+],
 shadcn: {
 
    prefix: 'Ui',
