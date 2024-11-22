@@ -1,14 +1,20 @@
 <script setup lang="ts">
 import { useMutation } from "@tanstack/vue-query";
 import { v4 as uuid } from 'uuid';
-import { COLLECTION_BLOGS, DB_ID } from "@/app.constants";
+import { COLLECTION_BLOGS, DB_ID, STORAGE_ID } from "@/app.constants";
 import { DB } from "~/lib/appwrite";
 import { useAuthStore } from "@/store/auth.store"; // Import the auth store
-import {storage} from "@/lib/appwrite"
+import { storage } from "@/lib/appwrite"
+import type { BlogCard } from "~/components/blogger/blogger.types";
 
 const isOpenForm = ref<boolean>(false);
 
 interface BlogForm extends Pick<BlogCard, 'title' | 'about' | 'foto1_url' | 'description1' | 'foto2_url' | 'description2' | 'creator'> { }
+
+
+interface InputFileEvent extends Event {
+	target: HTMLInputElement;
+}
 
 const props = defineProps({
 	refetch: {
@@ -20,9 +26,7 @@ const { handleSubmit, defineField, handleReset, setFieldValue, setValues, values
 
 const [title, titleAttrs] = defineField('title');
 const [about, aboutAttrs] = defineField('about');
-const [foto1_url, foto1_urlAttrs] = defineField('foto1_url');
 const [description1, description1Attrs] = defineField('description1');
-const [foto2_url, foto2_urlAttrs] = defineField('foto2_url');
 const [description2, description2Attrs] = defineField('description2');
 
 // Access the current user's data from the auth store
@@ -56,8 +60,43 @@ const { mutate, isPending } = useMutation({
 });
 
 const onSubmit = handleSubmit(values => {
-	mutate(values);
+	mutate(values)
+	isOpenForm.value = !isOpenForm.value
 });
+
+const { mutate: uploadImage, isPending: isUploadImagePending } = useMutation({
+	mutationKey: ["uploadImage"],
+	mutationFn: (file: File) => storage.createFile(STORAGE_ID, uuid(), file),
+	onSuccess(data) {
+		const response = storage.getFileDownload(STORAGE_ID, data.$id);
+
+		setFieldValue("foto1_url", response);
+	},
+});
+
+function handleFileChange(event: InputFileEvent) {
+	const file = event.target.files?.[0];
+	if (file) {
+		uploadImage(file);
+	}
+}
+
+const { mutate: uploadImage2, isPending: isUploadImagePending2 } = useMutation({
+	mutationKey: ["uploadImage2"],
+	mutationFn: (file: File) => storage.createFile(STORAGE_ID, uuid(), file),
+	onSuccess(data) {
+		const response = storage.getFileDownload(STORAGE_ID, data.$id);
+
+		setFieldValue("foto2_url", response);
+	},
+});
+
+function handleFileChange2(event: InputFileEvent) {
+	const file = event.target.files?.[0];
+	if (file) {
+		uploadImage2(file);
+	}
+}
 </script>
 
 <template>
@@ -70,9 +109,9 @@ const onSubmit = handleSubmit(values => {
 		<form v-if="isOpenForm" @submit="onSubmit" class="form">
 			<UiInput v-model="title" v-bind="titleAttrs" placeholder="Title" type="text" />
 			<UiInput v-model="about" v-bind="aboutAttrs" placeholder="About" type="text" />
-			<UiInput v-model="foto1_url" v-bind="foto1_urlAttrs" placeholder="Foto #1" type="file" />
+			<UiInput @change="handleFileChange" :disabled="isUploadImagePending" placeholder="Foto #1" type="file" />
 			<UiTextarea v-model="description1" v-bind="description1Attrs" placeholder="Description #1" type="text" />
-			<UiInput v-model="foto2_url" v-bind="foto2_urlAttrs" placeholder="Foto #2" type="file" />
+			<UiInput @change="handleFileChange2" :disabled="isUploadImagePending2" placeholder="Foto #2" type="file" />
 			<UiTextarea v-model="description2" v-bind="description2Attrs" placeholder="Description #2" type="text" />
 
 			<button :disabled="isPending">
