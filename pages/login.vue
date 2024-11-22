@@ -72,7 +72,7 @@ const register = async () => {
 				<UiInput v-model="name" placeholder="Name" type="text" class="mb-3" />
 
 				<div class="flex items-center justify-center gap-5">
-					<UiButton @click="login"  class="text-white" variant="secondary" type="button">Login
+					<UiButton @click="login" class="text-white" variant="secondary" type="button">Login
 					</UiButton>
 					<UiButton @click="register" class="text-white" variant="secondary" type="button">Register
 					</UiButton>
