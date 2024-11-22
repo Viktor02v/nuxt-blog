@@ -3,9 +3,9 @@ import { useMutation } from "@tanstack/vue-query";
 import { v4 as uuid } from 'uuid';
 import { COLLECTION_BLOGS, DB_ID, STORAGE_ID } from "@/app.constants";
 import { DB } from "~/lib/appwrite";
-import { useAuthStore } from "@/store/auth.store"; 
+import { useAuthStore } from "@/store/auth.store";
 import { storage } from "@/lib/appwrite"
-import type { BlogCard } from "~/components/blogger/blogger.types";
+import type { BlogCard } from "@/components/blogger/blogger.types";
 
 const authStore = useAuthStore();
 
@@ -42,8 +42,8 @@ const { mutate, isPending } = useMutation({
 		const creator = user ? { name: user.name, email: user.email } : null;
 
 		const formData = {
-			...data, 
-			creator, 
+			...data,
+			creator,
 		};
 
 		return DB.createDocument(DB_ID, COLLECTION_BLOGS, uuid(), formData);
@@ -87,9 +87,13 @@ function handleFileChange(event: InputFileEvent, field: keyof BlogForm) {
 		<form v-if="isOpenForm" @submit="onSubmit" class="form">
 			<UiInput v-model="title" v-bind="titleAttrs" placeholder="Title" type="text" />
 			<UiInput v-model="about" v-bind="aboutAttrs" placeholder="About" type="text" />
+			<img v-if="values.foto1_url || isUploadImagePending" :src="values.foto1_url" alt="" width="50" height="50"
+			class="rounded-full my-4" />
 			<UiInput @change="handleFileChange($event, 'foto1_url')" :disabled="isUploadImagePending" placeholder="Foto #1"
 				type="file" />
 			<UiTextarea v-model="description1" v-bind="description1Attrs" placeholder="Description #1" type="text" />
+			<img v-if="values.foto2_url || isUploadImagePending" :src="values.foto2_url" alt="" width="50" height="50"
+			class=" my-4" />
 			<UiInput @change="handleFileChange($event, 'foto2_url')" :disabled="isUploadImagePending" placeholder="Foto #2"
 				type="file" />
 			<UiTextarea v-model="description2" v-bind="description2Attrs" placeholder="Description #2" type="text" />
