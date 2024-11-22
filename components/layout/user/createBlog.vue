@@ -3,9 +3,11 @@ import { useMutation } from "@tanstack/vue-query";
 import { v4 as uuid } from 'uuid';
 import { COLLECTION_BLOGS, DB_ID, STORAGE_ID } from "@/app.constants";
 import { DB } from "~/lib/appwrite";
-import { useAuthStore } from "@/store/auth.store"; // Import the auth store
+import { useAuthStore } from "@/store/auth.store"; 
 import { storage } from "@/lib/appwrite"
 import type { BlogCard } from "~/components/blogger/blogger.types";
+
+const authStore = useAuthStore();
 
 const isOpenForm = ref<boolean>(false);
 
@@ -29,12 +31,7 @@ const [about, aboutAttrs] = defineField('about');
 const [description1, description1Attrs] = defineField('description1');
 const [description2, description2Attrs] = defineField('description2');
 
-// Access the current user's data from the auth store
-const authStore = useAuthStore();
-
-// Function to get the current user
 const getCurrentUser = () => {
-	// You already have the user data in the store
 	return authStore.user;
 };
 
@@ -42,15 +39,13 @@ const { mutate, isPending } = useMutation({
 	mutationKey: ['create a new blog'],
 	mutationFn: async (data: BlogForm) => {
 		const user = getCurrentUser();
-		const creator = user ? { name: user.name, email: user.email } : null; // Assign the creator information from the store
+		const creator = user ? { name: user.name, email: user.email } : null;
 
-		// Prepare the form data for submission
 		const formData = {
-			...data, // Include all form fields
-			creator, // Add creator data from the current user
+			...data, 
+			creator, 
 		};
 
-		// Send the data to the DB (Appwrite or other backend)
 		return DB.createDocument(DB_ID, COLLECTION_BLOGS, uuid(), formData);
 	},
 	onSuccess() {
@@ -66,35 +61,18 @@ const onSubmit = handleSubmit(values => {
 
 const { mutate: uploadImage, isPending: isUploadImagePending } = useMutation({
 	mutationKey: ["uploadImage"],
-	mutationFn: (file: File) => storage.createFile(STORAGE_ID, uuid(), file),
-	onSuccess(data) {
+	mutationFn: (payload: { file: File; field: keyof BlogForm }) =>
+		storage.createFile(STORAGE_ID, uuid(), payload.file),
+	onSuccess(data, { field }) {
 		const response = storage.getFileDownload(STORAGE_ID, data.$id);
-
-		setFieldValue("foto1_url", response);
+		setFieldValue(field, response); // Dynamically set the correct field
 	},
 });
 
-function handleFileChange(event: InputFileEvent) {
+function handleFileChange(event: InputFileEvent, field: keyof BlogForm) {
 	const file = event.target.files?.[0];
 	if (file) {
-		uploadImage(file);
-	}
-}
-
-const { mutate: uploadImage2, isPending: isUploadImagePending2 } = useMutation({
-	mutationKey: ["uploadImage2"],
-	mutationFn: (file: File) => storage.createFile(STORAGE_ID, uuid(), file),
-	onSuccess(data) {
-		const response = storage.getFileDownload(STORAGE_ID, data.$id);
-
-		setFieldValue("foto2_url", response);
-	},
-});
-
-function handleFileChange2(event: InputFileEvent) {
-	const file = event.target.files?.[0];
-	if (file) {
-		uploadImage2(file);
+		uploadImage({ file, field }); // Pass the file and field to the mutation
 	}
 }
 </script>
@@ -109,9 +87,11 @@ function handleFileChange2(event: InputFileEvent) {
 		<form v-if="isOpenForm" @submit="onSubmit" class="form">
 			<UiInput v-model="title" v-bind="titleAttrs" placeholder="Title" type="text" />
 			<UiInput v-model="about" v-bind="aboutAttrs" placeholder="About" type="text" />
-			<UiInput @change="handleFileChange" :disabled="isUploadImagePending" placeholder="Foto #1" type="file" />
+			<UiInput @change="handleFileChange($event, 'foto1_url')" :disabled="isUploadImagePending" placeholder="Foto #1"
+				type="file" />
 			<UiTextarea v-model="description1" v-bind="description1Attrs" placeholder="Description #1" type="text" />
-			<UiInput @change="handleFileChange2" :disabled="isUploadImagePending2" placeholder="Foto #2" type="file" />
+			<UiInput @change="handleFileChange($event, 'foto2_url')" :disabled="isUploadImagePending" placeholder="Foto #2"
+				type="file" />
 			<UiTextarea v-model="description2" v-bind="description2Attrs" placeholder="Description #2" type="text" />
 
 			<button :disabled="isPending">
