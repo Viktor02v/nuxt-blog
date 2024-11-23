@@ -5,12 +5,14 @@ useSeoMeta({
 </script>
 
 <template>
-	<div class="p-10 w-full h-full">
+	<main class="p-10 w-full h-full">
 		<h1 class="font-bold text-title text-4xl mb-10">
 			Profile | Blogger
 		</h1>
-	</div>
+	</main>
 
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

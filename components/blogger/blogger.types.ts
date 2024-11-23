@@ -8,8 +8,7 @@ export interface BlogCard{
 	description2:string,
 	creator:{
 		name: string,
-		email: string
+		email: string,
 	},
 	$createdAt: string,
-	
 }

@@ -37,11 +37,21 @@ const props = defineProps<{
 			</div>
 		</UiCardContent>
 
-		<div class="pl-6">
+		<div class="pl-6 flex items-center justify-between">
 			<UiCardFooter class="flex text-[#d48484] rounded-full w-[280px] justify-center bg-white items-center gap-2">
 				<p class="text-[1.3rem] font-light">Created:</p>
 				<span class="text-[1.5rem]"> {{ formatDate(props.blog.$createdAt) }}</span>
 			</UiCardFooter>
+
+			<div class="pr-6">
+				<NuxtLink :to="`/blogs/blog/${blog.$id}`">
+					<UiButton
+						class="text-[#d48484] text-[1.8rem] flex rounded-full w-[150px] justify-center bg-white items-center gap-2"
+						type="button">
+						View
+					</UiButton>
+				</NuxtLink>
+			</div>
 		</div>
 	</UiCard>
 </template>
