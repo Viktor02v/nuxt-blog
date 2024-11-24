@@ -1,44 +1,43 @@
 <script setup lang="ts">
-import { useQuery } from "@tanstack/vue-query";
-import { COLLECTION_BLOGS, DB_ID } from "~/app.constants";
-import { DB } from "~/lib/appwrite";
-import type { BlogCard } from "~/components/blogger/blogger.types";
-import { errorMessages } from "vue/compiler-sfc";
+import { useBlog } from "@/components/layout/blog/useBlog";
 
 
 useSeoMeta({
-	title: 'Blog | Blogger'
-})
+	title: "Blog | Blogger",
+});
 
 const route = useRoute();
-const blogId = route.params.id as string
+const blogId = route.params.id as string;
 
-const { data: blog, isSuccess, isLoading, isError } = useQuery({
-	queryKey: ['get blog', blogId],
-	queryFn: () => DB.getDocument(DB_ID, COLLECTION_BLOGS, blogId)
-})
+const { blog, aboutWords, isLoading, isError } = useBlog(blogId);
 
-
+const blogTitle = computed(() => blog?.value?.title ?? "Untitled");
+const creatorName = computed(() => blog?.value?.creator?.name ?? "Anonymous");
 </script>
 
 <template>
 	<main class="p-10 w-full h-full">
-		<h1 class="font-bold  text-center text-title text-4xl mb-10">
-			{{ blog?.title }}	| Blogger
-		</h1>
+		<div v-if="isLoading">Is Loading...</div>
+		<section v-else class="flex mb-20 w-full items-start justify-between">
+			<h1 class="font-bold bg-white p-1 rounded text-center text-title text-4xl">
+				Blogger | {{ blogTitle }}
+			</h1>
 
-		<div v-if="isLoading">Is Loading</div>
-		<div>
-			<img :src="blog?.foto1_url" alt="">
-			{{ blog?.description1 }}
-			<img :src="blog?.foto2_url" alt="">
-			{{ blog?.description2 }}
-			{{ blog?.creator.name }}
-			{{ blog?.creator.email }}
-		</div>
+			<LayoutBlogCreatorInfo :name="creatorName" />
+		</section>
+
+		<section id="about" class="w-full flex flex-col items-center">
+			<div class="font-bold text-title ">
+				<div class="w-full flex justify-center">
+					<h2 class="text-4xl mb-3 bg-white p-2 rounded  text-center">About:</h2>
+				</div>
+
+				<LayoutBlogAboutWidget v-if="aboutWords" :about-words="aboutWords" />
+				<div v-else>Something went wrong</div>
+			</div>
+		</section>
 		<div v-if="isError">{{ errorMessages }}</div>
 	</main>
 </template>
-
 
 <style scoped></style>

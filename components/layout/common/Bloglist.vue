@@ -37,6 +37,6 @@ const { data: blogs, isLoading, error } = useBloggerQuery()
 }
 
 .animation {
-	animation: show 0.3s ease-in-out;
+	animation: show 0.6s ease-in-out;
 }
 </style>
