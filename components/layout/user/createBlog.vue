@@ -39,7 +39,7 @@ const { mutate, isPending } = useMutation({
 	mutationKey: ['create a new blog'],
 	mutationFn: async (data: BlogForm) => {
 		const user = getCurrentUser();
-		const creator = user ? { name: user.name, email: user.email } : null;
+		const creator = user ? { name: user.name, email: user.email, id:user.id } : null;
 
 		const formData = {
 			...data,
