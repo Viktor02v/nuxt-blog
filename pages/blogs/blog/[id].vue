@@ -43,7 +43,7 @@ const $created = computed(() => blog.value?.$createdAt ?? "Anonymous");
 			</div>
 		</section>
 
-		<section id="blog-content" class="w-full animation bg-white p-5 border rounded border-sidebarBg">
+		<section id="blog" class="w-full animation bg-white p-5 border rounded border-sidebarBg">
 			<div class="mb-10">
 				<div class="font-bold bg-sidebarBg p-1 rounded text-center text-white text-4xl">{{ blogTitle }}</div>
 			</div>
