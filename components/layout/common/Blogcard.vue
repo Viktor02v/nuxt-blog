@@ -46,9 +46,10 @@ const props = defineProps<{
 			<div class="pr-6">
 				<NuxtLink :to="`/blogs/blog/${blog.$id}`">
 					<UiButton
-						class="text-[#d48484] text-[1.8rem] flex rounded-full w-[150px] justify-center bg-white items-center gap-2"
+						class="text-[#d48484] text-[1.8rem] flex rounded-full w-[150px] justify-center hover:bg-[#EDEBEB] bg-white items-center gap-2"
 						type="button">
 						View
+						<Icon name="line-md:arrow-right" class="text-[#d48484]"/>
 					</UiButton>
 				</NuxtLink>
 			</div>
