@@ -41,7 +41,7 @@ const login = async () => {
 		name.value = '';
 
 		// Navigate to home page
-		await router.push('/common/all-blogs');
+		await router.push('/blogs');
 	} catch (error) {
 		alert(`Login failed:, ${error}`);
 	} finally {

@@ -18,7 +18,7 @@ export const MENU_DATA:MenuData[] = [
 	{
 		name:'All Blogs',
 		icon:'line-md:list',
-		url:'/common/all-blogs',
+		url:'/blogs',
 	},
 	{
 		icon: 'line-md:edit',
