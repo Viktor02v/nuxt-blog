@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useBlog } from "@/components/layout/blog/useBlog";
 import { useComments } from "@/components/layout/blog/useComents";
+import { useCreateComment } from "@/components/layout/blog/useCreateComments";
 import { formatDate } from '@/components/blogger/formatDate'
 
 
@@ -23,7 +24,9 @@ const description2 = computed(() => blog?.value?.description2 ?? "Anonymous");
 const $created = computed(() => blog.value?.$createdAt ?? "Anonymous");
 
 // Comments Logic
-const { data: comments, isLoading: isLoadingComments, isError: isErrorCommetns } = useComments(blogId);
+const { data: comments, isLoading: isLoadingComments, refetch, isError: isErrorCommetns } = useComments(blogId);
+
+const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 </script>
 
 <template>
@@ -79,18 +82,21 @@ const { data: comments, isLoading: isLoadingComments, isError: isErrorCommetns }
 
 		<section id="comments" class="mt-10 w-full p-5 bg-white rounded">
 			<h2 class="font-bold bg-white p-1 rounded text-center text-title text-4xl mb-3">Comments</h2>
+
 			<div class="flex items-center gap-5 mb-5">
 
-				<UiInput placeholder="Write a comment" class="border bg-white p-5" />
+				<UiInput v-model="commentRef" @keyup.enter="writeComment" placeholder="Write a comment..."
+					class="border-2 placeholder-colorSidebar border-sidebarBg bg-white p-5" />
 
-				<button class=" px-8 text-xl py-2 bg-sidebarBg text-[24px] rounded text-white">
+				<button @click="writeComment" class=" px-8 text-xl py-2 bg-sidebarBg text-[24px] rounded text-white">
 					Add
 				</button>
 			</div>
 
 			<div class="">
-					<LayoutBlogComment v-if="comments" :comments=comments />
-					<div v-else>There has been an error while loadin comments</div>
+				<div v-if="isLoadingComments">Comments are loading</div>
+				<div v-else-if="isErrorCommetns">There has been an erro while loading coments</div>
+				<LayoutBlogComment v-else :comments=comments />
 			</div>
 
 		</section>
