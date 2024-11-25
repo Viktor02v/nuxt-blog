@@ -9,10 +9,9 @@ useSeoMeta({
 		<h1 class="font-bold  text-center text-title text-4xl mb-10">
 			All Blogs | Blogger
 		</h1>
-		<LayoutCommonBloglist :refetch="refetch" />
+		<LayoutCommonBloglist />
 	</main>
 </template>
-
 
 <style scoped>
 
