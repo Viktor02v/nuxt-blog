@@ -3,8 +3,7 @@ import { DB } from "@/lib/appwrite";
 import { Query } from "appwrite";
 import { COLLECTION_COMMENTS, DB_ID } from "~/app.constants";
 
-// Fetch comments for a specific blog
-export function useComments(blogId: string) {
+export function useComments(blogId: string){
 return useQuery({
    queryKey: ["comments", blogId],
    queryFn: async () => {

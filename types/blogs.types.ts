@@ -10,7 +10,7 @@ export interface Creator extends BaseField{
 }
 
 export interface Comment extends BaseField{
-	text:string
+	text:string,
 }
 
 export interface Blog extends BaseField {

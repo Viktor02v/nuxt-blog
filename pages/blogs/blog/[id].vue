@@ -93,7 +93,7 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 				</button>
 			</div>
 
-			<div class="">
+			<div class="w-full">
 				<div v-if="isLoadingComments">Comments are loading</div>
 				<div v-else-if="isErrorCommetns">There has been an erro while loading coments</div>
 				<LayoutBlogComment v-else :comments=comments />

@@ -13,7 +13,6 @@ useSeoMeta({
 	</main>
 </template>
 
-
 <style scoped>
 
 </style>
