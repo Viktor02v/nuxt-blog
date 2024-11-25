@@ -2,7 +2,8 @@
 import { useBlog } from "@/components/layout/blog/useBlog";
 import { useComments } from "@/components/layout/blog/useComents";
 import { formatDate } from '@/components/blogger/formatDate'
-import { } from "@/components/layout/blog/useComents";
+
+
 useSeoMeta({
 	title: `Blog | Blogger`,
 });
@@ -76,20 +77,21 @@ const { data: comments, isLoading: isLoadingComments, isError: isErrorCommetns }
 			</div>
 		</section>
 
-		<section id="comments" class="mt-10 w-full bg-white rounded">
-			<h2 class="font-bold bg-white p-1 rounded text-center text-title text-4xl">Comments</h2>
-			<div class="flex items-center gap-5 p-2">
-				<UiInput placeholder="Write a comment" class="border rounded-none bg-white p-5" />
+		<section id="comments" class="mt-10 w-full p-5 bg-white rounded">
+			<h2 class="font-bold bg-white p-1 rounded text-center text-title text-4xl mb-3">Comments</h2>
+			<div class="flex items-center gap-5 mb-5">
+
+				<UiInput placeholder="Write a comment" class="border bg-white p-5" />
+
 				<button class=" px-8 text-xl py-2 bg-sidebarBg text-[24px] rounded text-white">
 					Add
 				</button>
 			</div>
-			<ul>
-				<li v-for="comment in comments || []" :key="comment.$id" class="mb-2 border-b">
-					<p>{{ comment.text }}</p>
-					<p>{{ formatDate(comment.$createdAt) }}</p>
-				</li>
-			</ul>
+
+			<div class="">
+					<LayoutBlogComment v-if="comments" :comments=comments />
+					<div v-else>There has been an error while loadin comments</div>
+			</div>
 
 		</section>
 		<div v-if="isError">{{ errorMessages }}</div>
