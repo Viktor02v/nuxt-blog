@@ -9,7 +9,6 @@ useSeoMeta({
 	title: `Blog | Blogger`,
 });
 
-
 const route = useRoute();
 const blogId = route.params.id as string;
 
