@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useBlog } from "@/components/layout/blog/useBlog";
+import { useComments } from "@/components/layout/blog/useComents";
 import { formatDate } from '@/components/blogger/formatDate'
-
+import { } from "@/components/layout/blog/useComents";
 useSeoMeta({
 	title: `Blog | Blogger`,
 });
@@ -19,6 +20,9 @@ const description1 = computed(() => blog?.value?.description1 ?? "Anonymous");
 const blogFoto2 = computed(() => blog?.value?.foto2_url ?? "Anonymous");
 const description2 = computed(() => blog?.value?.description2 ?? "Anonymous");
 const $created = computed(() => blog.value?.$createdAt ?? "Anonymous");
+
+// Comments Logic
+const { data: comments, isLoading: isLoadingComments, isError: isErrorCommetns } = useComments(blogId);
 </script>
 
 <template>
@@ -68,7 +72,25 @@ const $created = computed(() => blog.value?.$createdAt ?? "Anonymous");
 				</template>
 			</LayoutBlogSimpleContentBlock>
 
-			<div class="font-bold bg-sidebarBg p-1 rounded text-center text-white text-4xl">{{ formatDate($created) }}</div>
+			<div class="font-bold bg-sidebarBg p-1 rounded text-center text-white text-4xl">{{ formatDate($created) }}
+			</div>
+		</section>
+
+		<section id="comments" class="mt-10 w-full bg-white rounded">
+			<h2 class="font-bold bg-white p-1 rounded text-center text-title text-4xl">Comments</h2>
+			<div class="flex items-center gap-5 p-2">
+				<UiInput placeholder="Write a comment" class="border rounded-none bg-white p-5" />
+				<button class=" px-8 text-xl py-2 bg-sidebarBg text-[24px] rounded text-white">
+					Add
+				</button>
+			</div>
+			<ul>
+				<li v-for="comment in comments || []" :key="comment.$id" class="mb-2 border-b">
+					<p>{{ comment.text }}</p>
+					<p>{{ formatDate(comment.$createdAt) }}</p>
+				</li>
+			</ul>
+
 		</section>
 		<div v-if="isError">{{ errorMessages }}</div>
 	</main>
