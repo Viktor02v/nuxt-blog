@@ -97,8 +97,10 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 				</div>
 
 				<div class="w-full">
-					<div v-if="isLoadingComments">Comments are loading</div>
-					<div v-else-if="isErrorCommetns">There has been an erro while loading coments</div>
+					<div v-if="isLoadingComments" class="wrapper">
+						<Icon name="eos-icons:bubble-loading" size="300" class="text-colorSidebar" />
+					</div>
+
 					<LayoutBlogComment v-else :comments=comments />
 				</div>
 
