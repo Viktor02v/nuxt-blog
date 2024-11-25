@@ -86,9 +86,9 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 			<div class="flex items-center gap-5 mb-5">
 
 				<UiInput v-model="commentRef" @keyup.enter="writeComment" placeholder="Write a comment..."
-					class="border-2 placeholder-colorSidebar border-sidebarBg bg-white p-5" />
+					class="border-2 placeholder-colorSidebar hover:border-colorSidebar transition-all border-sidebarBg bg-white p-5" />
 
-				<button @click="writeComment" class=" px-8 text-xl py-2 bg-sidebarBg text-[24px] rounded text-white">
+				<button @click="writeComment" class="border border-sidebarBg hover:bg-colorSidebar transition-all  px-8 text-xl py-2 bg-sidebarBg text-[24px] rounded text-white">
 					Add
 				</button>
 			</div>
