@@ -4,9 +4,9 @@ const { data: blogs, isLoading, error } = useBloggerQuery()
 </script>
 
 <template>
-	<section>
-		<div v-if="isLoading">
-			Loading blogs...
+	<section class="w-full h-full">
+		<div v-if="isLoading" class="wrapper">
+			<Icon name="eos-icons:bubble-loading" size="300" class="text-colorSidebar" />
 		</div>
 
 		<div v-else-if="error">
@@ -38,5 +38,9 @@ const { data: blogs, isLoading, error } = useBloggerQuery()
 
 .animation {
 	animation: show 0.6s ease-in-out;
+}
+
+.wrapper {
+	@apply flex items-center justify-center w-full h-full
 }
 </style>
