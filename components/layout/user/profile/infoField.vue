@@ -1,13 +1,5 @@
-<template>
-	<p class="flex animation gap-1 p-3 rounded border-2 border-sidebarBg">
-		<span class="font-light">{{ label }}:</span>
-		<span>
-			<slot />
-		</span>
-	</p>
-</template>
-
-<script setup>
+<script setup lang="ts">
+import { defineProps } from 'vue'
 defineProps({
 	label: {
 		type: String,
@@ -16,6 +8,16 @@ defineProps({
 	},
 });
 </script>
+
+
+<template>
+	<p class="flex animation gap-1 p-3 rounded border-2 border-sidebarBg">
+		<span class="font-light">{{ label }}:</span>
+		<span>
+			<slot />
+		</span>
+	</p>
+</template>
 
 <style scoped>
 @keyframes show {

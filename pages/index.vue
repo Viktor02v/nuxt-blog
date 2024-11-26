@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAppwriteUser } from '@/components/layout/user/profile/useUserDatails'
-const { isLoading, error, fetchUser } = useAppwriteUser();
+const { user, isLoading, error, fetchUser } = useAppwriteUser();
 useSeoMeta({
 	title: 'Profile | Blogger'
 })
@@ -19,19 +19,30 @@ useSeoMeta({
 			</h1>
 
 			<section id="userInfo" class="w-full">
-				<UiCard  class="w-full">
+				<UiCard class="w-full">
 					<UiCardHeader>
-						<div class="flex justify-center">
-							<h2 class="font-bold rounded  p-3 bg-white text-title text-4xl mb-5">User Info</h2>
-						</div>
-						<UiCardTitle class="flex justify-center ">
-
-							<LayoutUserProfileUserInfo />
-
-							<div v-if="error">There has been an error</div>
+						<UiCardTitle>
+							<div class="flex justify-center">
+								<h2 class="font-bold rounded  p-3 bg-white text-title text-4xl mb-5">User Info</h2>
+							</div>
 						</UiCardTitle>
 					</UiCardHeader>
+
+					<UiCardContent class="flex text-colorSidebar justify-center ">
+
+						<LayoutUserProfileUserInfo />
+
+						<div v-if="error">There has been an error</div>
+					</UiCardContent>
 				</UiCard>
+			</section>
+
+			<section id="userBlogs" class="w-full">
+				<div class="flex justify-center">
+					<h2 class="font-bold text-title bg-white text-5xl mb-10">
+						Published Blogs
+					</h2>
+				</div>
 			</section>
 		</div>
 	</main>
