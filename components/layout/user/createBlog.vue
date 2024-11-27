@@ -105,4 +105,6 @@ function handleFileChange(event: InputFileEvent, field: keyof BlogForm) {
 	</section>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

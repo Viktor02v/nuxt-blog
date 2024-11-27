@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useAppwriteUser } from '@/components/layout/user/profile/useUserDatails'
-const { user, isLoading, error, fetchUser } = useAppwriteUser();
+import { useAppwriteUser } from "@/components/layout/user/profile/useUserDatails"
+const { isLoading, error } = useAppwriteUser();
 useSeoMeta({
 	title: 'Profile | Blogger'
 })
 
-</script>
+</script> 
 
 <template>
 	<main class="p-10 w-full h-full">
@@ -18,7 +18,7 @@ useSeoMeta({
 				Profile | Blogger
 			</h1>
 
-			<section id="userInfo" class="w-full">
+			<section id="userInfo" class="w-full mb-20">
 				<UiCard class="w-full">
 					<UiCardHeader>
 						<UiCardTitle>
@@ -35,14 +35,6 @@ useSeoMeta({
 						<div v-if="error">There has been an error</div>
 					</UiCardContent>
 				</UiCard>
-			</section>
-
-			<section id="userBlogs" class="w-full">
-				<div class="flex justify-center">
-					<h2 class="font-bold text-title bg-white text-5xl mb-10">
-						Published Blogs
-					</h2>
-				</div>
 			</section>
 		</div>
 	</main>
