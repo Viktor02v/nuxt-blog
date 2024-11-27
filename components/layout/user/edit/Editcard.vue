@@ -49,7 +49,7 @@ const props = defineProps<{
 						class="text-[#d48484] text-[1.8rem] flex rounded-full w-[150px] justify-center hover:bg-[#EDEBEB] bg-white items-center gap-2"
 						type="button">
 						Edit
-						<Icon name="line-md:arrow-right" class="text-[#d48484]"/>
+						<Icon name="line-md:edit" class="text-[#d48484]" />
 					</UiButton>
 				</NuxtLink>
 			</div>
@@ -57,6 +57,4 @@ const props = defineProps<{
 	</UiCard>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
