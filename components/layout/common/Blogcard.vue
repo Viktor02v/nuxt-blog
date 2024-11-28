@@ -29,7 +29,7 @@ const props = defineProps<{
 
 		<UiCardContent class="w-full flex gap-6 items-start">
 			<div>
-				<NuxtImg v-if="!props.blog.foto1_url" :src="props.blog.foto1_url"
+				<NuxtImg v-if="props.blog.foto1_url" :src="props.blog.foto1_url"
 					class="min-w-1/2 h-[250px] rounded" alt="" />
 
 				<NuxtImg v-else src="Blogger.jpg" class="min-w-1/2 h-[250px] rounded"
