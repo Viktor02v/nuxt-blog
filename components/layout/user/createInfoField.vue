@@ -3,11 +3,7 @@
 </script>
 
 <template>
-	<div>
-
-	</div>
+	<label class="font-light text-[0.7rem] flex">
+		<slot />
+	</label>
 </template>
-
-<style scoped>
-
-</style>
