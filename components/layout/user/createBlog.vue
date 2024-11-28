@@ -29,7 +29,6 @@ const aboutCount = computed(() => (about.value?.length || 0));
 const description1Count = computed(() => (description1.value?.length || 0));
 const description2Count = computed(() => (description2.value?.length || 0));
 
-
 interface BlogForm extends Pick<BlogCard, 'title' | 'about' | 'foto1_url' | 'description1' | 'foto2_url' | 'description2' | 'creator'> { }
 
 interface InputFileEvent extends Event {
@@ -42,6 +41,11 @@ const [title, titleAttrs] = defineField('title');
 const [about, aboutAttrs] = defineField('about');
 const [description1, description1Attrs] = defineField('description1');
 const [description2, description2Attrs] = defineField('description2');
+
+// Check if all required fields are filled
+const isFormValid = computed(() => {
+	return title.value && about.value && description1.value && description2.value && values.foto1_url && values.foto2_url;
+});
 
 const getCurrentUser = () => {
 	return authStore.user;
@@ -66,7 +70,6 @@ const { mutate, isPending } = useMutation({
 	}
 });
 
-
 const { mutate: uploadImage, isPending: isUploadImagePending } = useMutation({
 	mutationKey: ["uploadImage"],
 	mutationFn: (payload: { file: File; field: keyof BlogForm }) =>
@@ -85,10 +88,14 @@ function handleFileChange(event: InputFileEvent, field: keyof BlogForm) {
 }
 
 const onSubmit = handleSubmit(values => {
-	mutate(values)
-	isOpenForm.value = !isOpenForm.value
-	alert("Blog was succesfully created")
-	router.push('/blogs')
+	if (isFormValid.value) {
+		mutate(values);
+		isOpenForm.value = !isOpenForm.value;
+		alert("Blog was successfully created");
+		router.push('/blogs');
+	} else {
+		alert("Please fill in all fields before creating the blog.");
+	}
 });
 </script>
 
@@ -102,6 +109,7 @@ const onSubmit = handleSubmit(values => {
 		<form v-if="isOpenForm" @submit="onSubmit"
 			class="animation flex flex-col w-full gap-3 bg-white rounded p-5 border border-sidebarBg">
 
+			<!-- Title field -->
 			<div>
 				<LayoutUserCreateInfoField>
 					No longer then 15 characters
@@ -114,6 +122,7 @@ const onSubmit = handleSubmit(values => {
 				</LayoutUserCreateInfoField>
 			</div>
 
+			<!-- About field -->
 			<div>
 				<LayoutUserCreateInfoField>
 					No longer then 125 characters
@@ -126,26 +135,24 @@ const onSubmit = handleSubmit(values => {
 				</LayoutUserCreateInfoField>
 			</div>
 
+			<!-- Image fields -->
 			<div>
 				<img v-if="values.foto1_url || isUploadImagePending" :src="values.foto1_url" alt="" width="50" height="50"
 					class="rounded-full my-4" />
-
 				<LayoutUserCreateInfoField>
 					Formats: .webp, .jpg, .jpeg, .png, .svg
 				</LayoutUserCreateInfoField>
-
 				<UiInput class="input" @change="handleFileChange($event, 'foto1_url')" :disabled="isUploadImagePending"
 					placeholder="Foto #1" type="file" />
 			</div>
 
+			<!-- Description fields -->
 			<div>
 				<LayoutUserCreateInfoField>
 					No longer then 20000 characters
 				</LayoutUserCreateInfoField>
-
 				<UiTextarea class="input" v-model="description1" v-bind="description1Attrs" placeholder="Description #1"
 					type="text" />
-
 				<LayoutUserCreateInfoField>
 					<div v-if="description1Count > 0">
 						{{ description1Count }}/{{ descriptionLimit }}
@@ -156,11 +163,9 @@ const onSubmit = handleSubmit(values => {
 			<div>
 				<img v-if="values.foto2_url || isUploadImagePending" :src="values.foto2_url" alt="" width="50" height="50"
 					class="rounded-full my-4" />
-
 				<LayoutUserCreateInfoField>
 					Formats: .webp, .jpg, .jpeg, .png, .svg
 				</LayoutUserCreateInfoField>
-
 				<UiInput class="input" @change="handleFileChange($event, 'foto2_url')" :disabled="isUploadImagePending"
 					placeholder="Foto #2" type="file" />
 			</div>
@@ -169,10 +174,8 @@ const onSubmit = handleSubmit(values => {
 				<LayoutUserCreateInfoField>
 					No longer then 20000 characters
 				</LayoutUserCreateInfoField>
-
 				<UiTextarea class="input" v-model="description2" v-bind="description2Attrs" placeholder="Description #2"
 					type="text" />
-
 				<LayoutUserCreateInfoField>
 					<div v-if="description2Count > 0">
 						{{ description2Count }}/{{ descriptionLimit }}
@@ -182,32 +185,10 @@ const onSubmit = handleSubmit(values => {
 
 			<div class="flex justify-center">
 				<button :disabled="isPending"
-					class=" text-white py-2 px-3 hover:bg-[#f1b4b4] transition-all rounded text-[1.3rem] bg-sidebarBg">
+					class="text-white py-2 px-3 hover:bg-[#f1b4b4] transition-all rounded text-[1.3rem] bg-sidebarBg">
 					{{ isPending ? 'Loading...' : 'Create' }}
 				</button>
 			</div>
 		</form>
 	</section>
 </template>
-
-<style scoped>
-@keyframes show {
-	from {
-		transform: translateY(-35px);
-		opacity: 0.4;
-	}
-
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-
-.animation {
-	animation: show 0.3s ease-in-out;
-}
-
-.input {
-	@apply border border-sidebarBg
-}
-</style>
