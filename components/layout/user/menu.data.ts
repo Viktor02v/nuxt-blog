@@ -23,7 +23,7 @@ export const MENU_DATA:MenuData[] = [
 	{
 		icon: 'line-md:edit',
 		name:'Edit',
-		url:'/edit'
+		url:'/editing'
 	},
 	{
 		icon: 'fluent:person-feedback-48-regular',

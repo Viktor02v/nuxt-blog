@@ -7,10 +7,11 @@
 		<h1 class="font-bold  text-center text-title text-4xl mb-10">
 			Create Blog | Blogger
 		</h1>
-		<LayoutUserCreateBlog/>
+
+		<div class="w-full flex items-center justify-center">
+		<LayoutUserCreateBlog class="flex w-1/2 items-center justify-center"  />
+	</div>
 	</main>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
