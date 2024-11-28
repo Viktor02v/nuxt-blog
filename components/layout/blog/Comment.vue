@@ -17,7 +17,7 @@ const props = defineProps({
 					<span class="text-[1.2rem] font-light">
 						by:
 					</span>
-					<p class="text-[1.3rem]">{{ authStore.user.name }}</p>
+					<p class="text-[1.3rem]">{{  }}</p>
 				</div>
 			</div>
 			<div class="mb-2 rounded flex p-2 justify-around border border-2 border-sidebarBg hover:border-colorSidebar">
