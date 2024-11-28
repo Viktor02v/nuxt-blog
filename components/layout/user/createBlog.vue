@@ -192,3 +192,21 @@ const onSubmit = handleSubmit(values => {
 		</form>
 	</section>
 </template>
+
+<style scoped>
+@keyframes show {
+	from {
+		transform:  translateY(-35px);
+		opacity: 0.4;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.animation {
+	animation: show 0.6s ease-in-out;
+}
+</style>
