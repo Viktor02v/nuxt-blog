@@ -12,8 +12,8 @@ const props = defineProps<{
 	<UiCard class="w-full animation flex flex-col gap-4 p-5">
 		<div class="flex w-full  items-center justify-between">
 			<UiCardTitle class="w-full">
-				<div class="w-1/3 p-1 overflow-x-auto whitespace-nowrap">
-					<p>
+				<div class="w-1/3 flex p-1 overflow-x-auto whitespace-nowrap">
+					<p class=" bg-white rounded px-4 py-2 ">
 						{{ props.blog.title }}
 					</p>
 				</div>
@@ -28,12 +28,8 @@ const props = defineProps<{
 		</div>
 
 		<UiCardContent class="w-full flex gap-6 items-start">
-			<div>
-				<NuxtImg v-if="props.blog.foto1_url" :src="props.blog.foto1_url" class="min-w-1/2 h-[250px] rounded"
-					alt="" />
 
-				<img v-else src="/public/Blogger.jpg" class="min-w-1/2 h-[250px] rounded" alt="">
-			</div>
+			<NuxtImg src="/Blogger.jpg" class="min-w-1/2 h-[250px] rounded" alt="" />
 
 			<div class="flex text-[#d48484] bg-white w-[47.5rem] h-[15.5rem] rounded p-2 flex-col gap-1">
 				<p class="font-light">Description:</p>

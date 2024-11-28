@@ -21,7 +21,7 @@ const logout = async () => {
 			<div class="border-b flex flex-col pb-5 items-center w-full">
 				<NuxtLink to="/" class="w-[100px] md:w-[120px] outline outline-white overflow-hidden rounded-full">
 					<div class="relative">
-						<NuxtImg class="" src="/logo-virus.webp" />
+						<NuxtImg class="" src="/Blogger.jpg" />
 						<div
 							class="bg-white w-full h-8 hover:h-40 transition-all  duration-300 ease-in-out flex items-center bg-opacity-60 justify-center bottom-0 right-0 absolute">
 							<div class="mt-5 flex flex-col items-center">
