@@ -28,8 +28,13 @@ const props = defineProps<{
 		</div>
 
 		<UiCardContent class="w-full flex gap-6 items-start">
-			<NuxtImg :src="props.blog.foto1_url" class="min-w-1/2 h-[250px] border-4 border-colorSidebar  rounded"
-				alt="" />
+			<div>
+				<NuxtImg v-if="!props.blog.foto1_url" :src="props.blog.foto1_url"
+					class="min-w-1/2 h-[250px] rounded" alt="" />
+
+				<NuxtImg v-else src="Blogger.jpg" class="min-w-1/2 h-[250px] rounded"
+					alt="" />
+			</div>
 
 			<div class="flex text-[#d48484] bg-white w-[47.5rem] h-[15.5rem] rounded p-2 flex-col gap-1">
 				<p class="font-light">Description:</p>
@@ -49,7 +54,7 @@ const props = defineProps<{
 						class="text-[#d48484] text-[1.8rem] flex rounded-full w-[150px] justify-center hover:bg-[#EDEBEB] bg-white items-center gap-2"
 						type="button">
 						View
-						<Icon name="line-md:arrow-right" class="text-[#d48484]"/>
+						<Icon name="line-md:arrow-right" class="text-[#d48484]" />
 					</UiButton>
 				</NuxtLink>
 			</div>
