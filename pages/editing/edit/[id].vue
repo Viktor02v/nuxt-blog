@@ -6,7 +6,6 @@ import { useDeleteBlog } from '@/components/layout/user/edit/useDeleteBlog';
 useSeoMeta({
 	title: `Blog | Blogger`,
 });
-
 const route = useRoute();
 const blogId = route.params.id as string;
 
@@ -24,10 +23,15 @@ const $created = computed(() => blog.value?.$createdAt ?? "Anonymous");
 const { mutate: deleteBlog } = useDeleteBlog();
 
 const handleDelete = () => {
+	const router = useRouter();
+
 	if (confirm('Are you sure you want to delete this blog?')) {
 		deleteBlog(blogId, {
 			onError: (error) => alert(`Failed to delete: ${error.message}`),
-			onSuccess: () => alert('Blog deleted successfully!'),
+			onSuccess: () => {
+				alert('Blog deleted successfully!')
+				router.push('/blogs')
+			}
 		});
 	}
 };
