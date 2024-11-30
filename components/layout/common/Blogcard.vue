@@ -29,7 +29,7 @@ const props = defineProps<{
 
 		<UiCardContent class="w-full flex flex-wrap md:flex-nowrap justify-center md:justify-normal gap-6 items-start">
 
-			<NuxtImg src="/Blogger.jpg" class="min-w-1/2 h-[200px] rounded" alt="" />
+			<NuxtImg src="/Blogger.jpg" class="min-w-1/2 h-[200px] md:h-[250px] rounded" alt="" />
 
 			<div class="flex text-[#d48484] bg-white w-[100rem] md:h-[15.5rem] rounded p-2 flex-col gap-1">
 				<p class="font-light self-center">Description:</p>
