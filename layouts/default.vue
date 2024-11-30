@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useIsLoadingStore, useAuthStore } from '@/store/auth.store';
+import { useMenuStore } from '@/store/menu.store';
 import { account } from '~/lib/appwrite';
 
 const isLoadingStore = useIsLoadingStore();
 const authStore = useAuthStore();
+const menuStore = useMenuStore()
 
 onMounted(async () => {
 	const isLoadingStore = useIsLoadingStore();
@@ -21,21 +23,21 @@ onMounted(async () => {
 		isLoadingStore.set(false)
 	}
 })
+
+
 </script>
 
 <template>
 	<LayoutLoader v-if="isLoadingStore.isLoading" />
-	<section v-else :class="{ grid: authStore.isAuth }" class="relative w-full h-[100vh]">
+	<section v-else class="relative w-[400px] h-[100vh]">
 		<LayoutUserSidebar v-if="authStore.isAuth" />
-		<div>
+		<div :class="{
+			'md:w-[1140px]': menuStore.isMenuOpen,
+			'md:w-[1390px]': !menuStore.isMenuOpen
+		}" class="transition-all w-full duration-500">
 			<slot />
 		</div>
 	</section>
 </template>
 
-<style scoped>
-.grid {
-	display: grid;
-	@apply grid-cols-[4fr_1fr];
-}
-</style>
+<style scoped></style>

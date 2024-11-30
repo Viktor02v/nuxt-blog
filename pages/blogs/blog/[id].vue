@@ -34,8 +34,8 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 			<Icon name="eos-icons:bubble-loading" size="300" class="text-colorSidebar" />
 		</div>
 		<div v-else>
-			<section id="blog-info" class="flex mb-20 w-full items-start justify-between">
-				<h1 class="font-bold bg-white p-1 rounded text-center text-title text-4xl">
+			<section id="blog-info" class="flex mb-20 flex-wrap md:flex-nowrap w-full items-start gap-5 md:gap-0 justify-center md:justify-between">
+				<h1 class="font-bold bg-white p-1 rounded text-center text-title md:text-4xl">
 					Blogger | {{ blogTitle }}
 				</h1>
 
@@ -45,7 +45,7 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 			<section id="about" class="w-full flex flex-col mb-10 items-center">
 				<div class="font-bold text-title ">
 					<div class="w-full flex justify-center">
-						<h2 class="text-4xl mb-3 bg-white p-2 rounded  text-center">About:</h2>
+						<h2 class="md:text-4xl mb-3 bg-white p-2 rounded  text-center">Categories:</h2>
 					</div>
 
 					<LayoutBlogAboutWidget v-if="aboutWords" :about-words="aboutWords" />
@@ -55,7 +55,7 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 
 			<section id="blog" class="w-full animation bg-white p-5 border rounded border-sidebarBg">
 				<div class="mb-10">
-					<div class="font-bold bg-sidebarBg p-1 rounded text-center text-white text-4xl">{{ blogTitle }}</div>
+					<div class="font-bold bg-sidebarBg p-1 rounded text-center text-white md:text-4xl">{{ blogTitle }}</div>
 				</div>
 
 				<LayoutBlogSimpleContentBlock>
@@ -64,7 +64,7 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 					</template>
 
 					<template #description>
-						{{ description1 }}
+							{{ description1 }}
 					</template>
 				</LayoutBlogSimpleContentBlock>
 
@@ -78,12 +78,12 @@ const { commentRef, writeComment } = useCreateComment({ refetch }, blogId);
 					</template>
 				</LayoutBlogSimpleContentBlock>
 
-				<div class="font-bold bg-sidebarBg p-1 rounded text-center text-white text-4xl">{{ formatDate($created) }}
+				<div class="font-bold bg-sidebarBg p-1 rounded text-center text-white text-[1rem] md:text-4xl">{{ formatDate($created) }}
 				</div>
 			</section>
 
 			<section id="comments" class="mt-10 w-full p-5 bg-white rounded">
-				<h2 class="font-bold bg-white p-1 rounded text-center text-title text-4xl mb-3">Comments</h2>
+				<h2 class="font-bold bg-white p-1 rounded text-center text-title md:text-4xl mb-3">Comments</h2>
 
 				<div class="flex items-center gap-5 mb-5">
 
