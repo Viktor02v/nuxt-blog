@@ -12,7 +12,7 @@
 		</div>
 
 		<!-- Description Section -->
-		<div class="w-[280px] md:w-full text-[1rem] break-words md:break-keep">
+		<div class="w-[240px] md:w-full text-[1rem] break-words md:break-keep">
 			<slot name="description"></slot>
 		</div>
 	</div>
