@@ -6,7 +6,7 @@ const { user, isLoading, error, fetchUser } = useAppwriteUser();
 </script>
 
 <template>
-		<div class="flex w-full gap-5 flex-wrap p-5 rounded bg-white">
+		<div class="flex w-full justify-center md:justify-normal gap-5 flex-wrap p-5 rounded bg-white">
 			<LayoutUserProfileInfoField label="name">
 				{{ user?.name }}
 			</LayoutUserProfileInfoField>

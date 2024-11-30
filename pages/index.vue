@@ -14,7 +14,7 @@ useSeoMeta({
 		</div>
 
 		<div v-else>
-			<h1 class="font-bold text-title text-4xl mb-10">
+			<h1 class="font-bold text-title text-center text-4xl mb-10">
 				Profile | Blogger
 			</h1>
 

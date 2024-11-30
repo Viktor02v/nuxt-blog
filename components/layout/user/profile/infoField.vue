@@ -11,7 +11,7 @@ defineProps({
 
 
 <template>
-	<p class="flex animation gap-1 p-3 rounded border-2 border-sidebarBg">
+	<p class="flex animation gap-1 p-3 w-full md:w-full overflow-x-auto rounded border-2 border-sidebarBg">
 		<span class="font-light">{{ label }}:</span>
 		<span>
 			<slot />
