@@ -43,8 +43,8 @@ const handleDelete = () => {
 			<Icon name="eos-icons:bubble-loading" size="300" class="text-colorSidebar" />
 		</div>
 		<div v-else>
-			<section id="blog-info" class="flex mb-20 w-full items-start justify-between">
-				<h1 class="font-bold bg-white p-1 rounded text-center text-title text-4xl">
+			<section id="blog-info" class="flex mb-20 flex-wrap md:flex-nowrap w-full items-start gap-5 md:gap-0 justify-center md:justify-between">
+				<h1 class="font-bold bg-white p-1 rounded text-center text-title md:text-4xl">
 					Blogger | {{ blogTitle }}
 				</h1>
 
@@ -54,7 +54,7 @@ const handleDelete = () => {
 			<section id="about" class="w-full flex flex-col mb-10 items-center">
 				<div class="font-bold text-title ">
 					<div class="w-full flex justify-center">
-						<h2 class="text-4xl mb-3 bg-white p-2 rounded  text-center">About:</h2>
+						<h2 class="md:text-4xl mb-3 bg-white p-2 rounded  text-center">Categories:</h2>
 					</div>
 
 					<LayoutBlogAboutWidget v-if="aboutWords" :about-words="aboutWords" />
@@ -89,8 +89,8 @@ const handleDelete = () => {
 					</template>
 				</LayoutBlogSimpleContentBlock>
 
-				<div class="font-bold flex items-center justify-between bg-sidebarBg p-1 rounded text-white text-4xl">
-					<p>{{ formatDate($created) }}</p>
+				<div class="font-bold flex items-center justify-between bg-sidebarBg p-1 rounded text-white md:text-4xl">
+					<p class="text-[1rem]">{{ formatDate($created) }}</p>
 					<UiButton @click="handleDelete" class="ml-auto bg-red-500 border-2 border-white hover:bg-red-600">
 						Delete
 					</UiButton>

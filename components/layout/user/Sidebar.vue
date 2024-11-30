@@ -26,7 +26,7 @@ const toggleMenu = () => {
 		'translate-x-0': menuStore.isMenuOpen,
 		'translate-x-[200px] md:translate-x-[250px]': !menuStore.isMenuOpen 
 	}"
-		class="w-[250px] md:w-[300px] fixed right-0 top-0 transition-all duration-500 bg-sidebarBg py-5 flex flex-col gap-6 h-[100vh]">
+		class="w-[250px] md:w-[300px] z-10 fixed right-0 top-0 transition-all duration-500 bg-sidebarBg py-5 flex flex-col gap-6 h-[100vh]">
 		<div class="relative w-full">
 			<div class="transition-all duration-500">
 				<button v-if="!menuStore.isMenuOpen" @click="toggleMenu"

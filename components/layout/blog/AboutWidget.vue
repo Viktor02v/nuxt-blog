@@ -6,9 +6,9 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="flex bg-white border border-sidebarBg p-5 rounded justify-center items-center flex-wrap gap-4">
+	<div class="flex  md:w-full bg-white border border-sidebarBg p-5 justify-between rounded md:justify-center items-center flex-wrap gap-4">
 		<ul v-for="item in props.aboutWords" :key="item" class="">
-			<li class="text-2xl cursor-pointer  hover:bg-colorSidebar bg-sidebarBg text-white p-4 animation rounded">{{
+			<li class="md:text-2xl text-[15px] cursor-pointer  hover:bg-colorSidebar bg-sidebarBg text-white p-4 animation rounded">{{
 				item }}</li>
 		</ul>
 	</div>
