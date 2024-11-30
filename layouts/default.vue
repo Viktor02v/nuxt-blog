@@ -29,7 +29,7 @@ onMounted(async () => {
 
 <template>
 	<LayoutLoader v-if="isLoadingStore.isLoading" />
-	<section v-else class="relative w-[430px] h-[100vh]">
+	<section v-else class="relative w-[400px] h-[100vh]">
 		<LayoutUserSidebar v-if="authStore.isAuth" />
 		<div :class="{
 			'md:w-[1140px]': menuStore.isMenuOpen,

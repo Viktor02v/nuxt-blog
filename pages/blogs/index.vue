@@ -5,8 +5,8 @@ useSeoMeta({
 </script>
 
 <template>
-	<main class="p-10 w-full h-full">
-		<h1 class="font-bold  text-center text-title text-4xl mb-10">
+	<main class="p-10  h-full">
+		<h1 class="font-bold text-center text-title text-4xl mb-10">
 			All Blogs | Blogger
 		</h1>
 		<LayoutCommonBloglist />
